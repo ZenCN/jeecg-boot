@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo.goods_arch.mapper.ErpProductMapper">
+    <select id="getSerialNo" resultType="java.lang.String">
+        select max(code) from erp_product where code like 'M-%'
+    </select>
+    <select id="queryMatCodeName" parameterType="java.lang.String" resultType="java.lang.String">
+        select concat(code, '|', name) from erp_product where code like concat('%', #{keyWords}, '%') or name like concat('%', #{keyWords}, '%')
+    </select>
+</mapper>
